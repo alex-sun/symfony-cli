@@ -2,8 +2,8 @@ FROM php:7-cli
 
 WORKDIR /home
 
-# GIT
-RUN apt-get update && apt-get install git -y && git config --global user.email "you@example.com"
+# APT & GIT
+RUN apt-get update && apt-get install git libzip-dev -y && git config --global user.email "you@example.com" && docker-php-ext-install zip
 
 # symfony
 RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
